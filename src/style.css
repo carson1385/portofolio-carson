@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------------------------------------------------------
+   1. CUSTOM CSS VARIABLES & BASE CONFIG
+   ------------------------------------------------------------------- */
+:root {
+  --header-height: 72px;
+  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Text Selection */
+::selection {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+/* -------------------------------------------------------------------
+   2. SCROLL PROGRESS BAR
+   ------------------------------------------------------------------- */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa, #38bdf8);
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* -------------------------------------------------------------------
+   3. ANIMATED GLOW & SPOTLIGHT CARDS
+   ------------------------------------------------------------------- */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--transition-smooth), border-color 0.3s ease, box-shadow 0.4s ease;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: var(--mouse-y, -200px);
+  left: var(--mouse-x, -200px);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* -------------------------------------------------------------------
+   4. INTERACTIVE 3D TILT EFFECT
+   ------------------------------------------------------------------- */
+.tilt-element {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.25s var(--transition-smooth);
+}
+
+/* -------------------------------------------------------------------
+   5. SHIMMER BORDER EFFECT ON FEATURED CARD
+   ------------------------------------------------------------------- */
+.shimmer-border {
+  position: relative;
+}
+
+.shimmer-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+  background-size: 200% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: shimmer 3.5s linear infinite;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------------
+   6. SCROLL REVEAL & STAGGER TRANSITIONS
+   ------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--transition-smooth), transform 0.7s var(--transition-smooth);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* -------------------------------------------------------------------
+   7. PULSE & FLOATING KEYFRAMES
+   ------------------------------------------------------------------- */
+@keyframes floatUpAndDown {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-floating {
+  animation: floatUpAndDown 4s ease-in-out infinite;
+}
+
+.animate-floating-delayed {
+  animation: floatUpAndDown 4s ease-in-out 2s infinite;
+}
+
+/* -------------------------------------------------------------------
+   8. ACTIVE NAV LINK INDICATOR
+   ------------------------------------------------------------------- */
+.nav-item-link {
+  position: relative;
+}
+
+.nav-item-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3b82f6;
+  transition: width 0.3s var(--transition-smooth);
+}
+
+.nav-item-link:hover::after,
+.nav-item-link.active::after {
+  width: 100%;
+}
+
+/* -------------------------------------------------------------------
+   9. CUSTOM TOAST POPUP
+   ------------------------------------------------------------------- */
+.toast-box {
+  transform: translateY(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s var(--transition-smooth), opacity 0.25s ease;
+}
+
+.toast-box.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
