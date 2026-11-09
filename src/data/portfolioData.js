@@ -23,7 +23,7 @@ export const portfolioData = {
     terminalUser: "carson@dev:~$ status",
     statusBadge: "Available for new projects & opportunities",
     heroGreeting: "Halo, Saya",
-    
+
     // Role dinamis yang bergantian diketik (Typewriter Effect)
     typewriterRoles: [
       "Software Engineer",
@@ -31,10 +31,10 @@ export const portfolioData = {
       "Problem Solver",
       "System Architect"
     ],
-    
+
     // Bio / Deskripsi singkat di bagian Hero
     bio: "Berfokus pada arsitektur perangkat lunak modern yang bersih, efisien, dan memiliki skalabilitas tinggi. Mengubah konsep kompleks menjadi produk digital berkinerja maksimal.",
-    
+
     // Lokasi & Spesialisasi (Muncul di kartu avatar terminal)
     location: "Jakarta, Indonesia",
     timeZone: "WIB / GMT+7",
@@ -52,13 +52,13 @@ export const portfolioData = {
   // ==========================================
   contact: {
     // Alamat email yang tampil di website dan tujuan copy clipboard
-    email: "carson.roderick@example.com",
+    email: "carsonrods01@gmail.com",
 
     // Nomor WhatsApp (Format: kode negara tanpa tanda '+', contoh: 6281234567890)
-    whatsappNumber: "6281234567890",
+    whatsappNumber: "6283164537261",
 
     // Tampilan nomor telepon yang rapi di kartu kontak
-    whatsappDisplay: "+62 812-3456-7890",
+    whatsappDisplay: "+62 831-6453-7261",
 
     // Pesan default saat tombol WhatsApp ditekan
     whatsappDefaultMessage: "Halo Carson Roderick, saya tertarik untuk mendiskusikan peluang proyek.",
@@ -66,7 +66,7 @@ export const portfolioData = {
     // Tautan Akun Sosial Media
     socialLinks: {
       github: "https://github.com/carson1385",
-      linkedin: "https://linkedin.com",
+      linkedin: "https://linkedin.com/CARSON",
       twitter: "https://twitter.com"
     }
   },
