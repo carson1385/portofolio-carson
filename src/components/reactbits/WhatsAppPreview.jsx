@@ -1,6 +1,7 @@
 import React from 'react';
 import { MessageSquare, CheckCheck, Clock } from 'lucide-react';
 import SpotlightCard from './SpotlightCard';
+import portfolioData from '../../data/portfolioData';
 
 /**
  * WhatsAppPreview - React Bits Component
@@ -8,16 +9,18 @@ import SpotlightCard from './SpotlightCard';
  */
 export default function WhatsAppPreview({ name, email, subject, message }) {
   const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const devName = portfolioData.personal.name;
+  const initials = portfolioData.personal.initials;
 
   return (
     <SpotlightCard className="p-5 border-emerald-500/25 bg-white dark:bg-obsidian-900 overflow-hidden">
       <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-white/5 mb-4">
         <div className="flex items-center space-x-2.5">
           <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-xs">
-            CR
+            {initials}
           </div>
           <div>
-            <h5 className="text-xs font-bold text-slate-800 dark:text-slate-200">Carson Roderick (Direct)</h5>
+            <h5 className="text-xs font-bold text-slate-800 dark:text-slate-200">{devName} (Direct)</h5>
             <span className="text-[10px] text-emerald-500 font-semibold block">Online &bull; Siap Merespons</span>
           </div>
         </div>
@@ -35,7 +38,7 @@ export default function WhatsAppPreview({ name, email, subject, message }) {
         {/* Dynamic Bubble */}
         <div className="ml-auto max-w-[88%] p-3 rounded-2xl rounded-tr-xs bg-emerald-600 text-white shadow-md space-y-1 text-xs">
           <div className="text-[11px] font-bold text-emerald-100 border-b border-emerald-500/40 pb-1">
-            Halo Carson Roderick!
+            Halo {devName}!
           </div>
 
           <div className="space-y-0.5 text-[11px] leading-relaxed pt-1">

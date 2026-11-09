@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Home, User, Briefcase, Mail, MessageSquare, Sun, Moon, Copy, FileText, X } from 'lucide-react';
+import portfolioData from '../../data/portfolioData';
 
 /**
  * CommandMenu - React Bits Component
@@ -28,7 +29,7 @@ export default function CommandMenu({ isOpen, setIsOpen, onToggleTheme, isDark, 
     { id: 'about', label: 'Buka Bagian About Me', category: 'Navigasi', icon: <User className="w-4 h-4" />, action: () => { window.location.hash = '#about'; setIsOpen(false); } },
     { id: 'projects', label: 'Buka Bagian Projects', category: 'Navigasi', icon: <Briefcase className="w-4 h-4" />, action: () => { window.location.hash = '#projects'; setIsOpen(false); } },
     { id: 'contact', label: 'Buka Bagian Contact', category: 'Navigasi', icon: <Mail className="w-4 h-4" />, action: () => { window.location.hash = '#contact'; setIsOpen(false); } },
-    { id: 'wa', label: 'Chat Langsung via WhatsApp', category: 'Kontak', icon: <MessageSquare className="w-4 h-4 text-emerald-500" />, action: () => { window.open('https://wa.me/6281234567890', '_blank'); setIsOpen(false); } },
+    { id: 'wa', label: 'Chat Langsung via WhatsApp', category: 'Kontak', icon: <MessageSquare className="w-4 h-4 text-emerald-500" />, action: () => { window.open(`https://wa.me/${portfolioData.contact.whatsappNumber}`, '_blank'); setIsOpen(false); } },
     { id: 'copy', label: 'Salin Alamat Email', category: 'Kontak', icon: <Copy className="w-4 h-4 text-accent" />, action: () => { onCopyEmail(); setIsOpen(false); } },
     { id: 'theme', label: isDark ? 'Ganti ke Light Mode' : 'Ganti ke Dark Mode', category: 'Tampilan', icon: isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />, action: () => { onToggleTheme(); setIsOpen(false); } },
   ];
