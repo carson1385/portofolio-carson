@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 
 /**
- * SpotlightCard - React Bits Component
+ * SpotlightCard - React Bits Component (Ultra-Optimized)
  * Interactive card with smooth radial spotlight illumination tracking the cursor.
+ * Renders children directly without intervening wrapper divs to preserve flex/grid styling.
  */
 export default function SpotlightCard({
   children,
@@ -35,15 +36,14 @@ export default function SpotlightCard({
     >
       {/* Dynamic spotlight layer */}
       <div
-        className="pointer-events-none absolute -inset-px transition-opacity duration-300"
+        className="pointer-events-none absolute -inset-px transition-opacity duration-300 z-0"
         style={{
           opacity,
           background: `radial-gradient(350px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 80%)`,
         }}
       />
-      {/* Content */}
-      <div className="relative z-10">{children}</div>
+      {/* Render children directly to preserve flex/grid layouts on the card */}
+      {children}
     </div>
   );
 }
-

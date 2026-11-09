@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { motion, useSpring } from 'framer-motion';
 
 /**
@@ -9,14 +9,12 @@ export default function Magnet({
   children,
   padding = 60,
   magnetStrength = 0.35,
-  activeTransition = 'cubic-bezier(0.16, 1, 0.3, 1)',
-  inactiveTransition = 'cubic-bezier(0.16, 1, 0.3, 1)',
   className = '',
   ...props
 }) {
   const ref = useRef(null);
-  const x = useSpring(0, { stiffness: 200, damping: 15 });
-  const y = useSpring(0, { stiffness: 200, damping: 15 });
+  const x = useSpring(0, { stiffness: 220, damping: 16 });
+  const y = useSpring(0, { stiffness: 220, damping: 16 });
 
   const handleMouseMove = (e) => {
     if (!ref.current) return;
@@ -37,17 +35,18 @@ export default function Magnet({
     y.set(0);
   };
 
+  const isBlockOrFlex = className.includes('flex') || className.includes('block') || className.includes('w-full');
+
   return (
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x, y }}
-      className={`inline-block ${className}`}
+      className={`${isBlockOrFlex ? '' : 'inline-block '}relative ${className}`}
       {...props}
     >
       {children}
     </motion.div>
   );
 }
-
